@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -7,22 +7,28 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg1"
     tools:context=".StartActivity">
+
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
-        android:layout_marginTop="300dp"
-        android:orientation="vertical"
         android:background="@drawable/startboxcustom"
-        >
+        android:orientation="vertical"
+        android:layout_marginTop="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:text="Find your dream hotel in Viet Nam"
+            android:textAlignment="center"
             android:textSize="25dp"
-            android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="180dp"
             android:layout_height="wrap_content"
@@ -30,15 +36,16 @@
             android:layout_margin="20dp"
             android:text="Long-term rental of villas with
 a guarantee of conformity with photographs"
-            android:textAlignment="center"/>
+            android:textAlignment="center" />
+
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/btncustom"
             android:layout_gravity="center"
-            app:backgroundTint="#4C9FC1"
+            android:background="@drawable/btncustom"
             android:text="Start"
+            android:textSize="20dp"
 
-            android:textSize="20dp"/>
+            app:backgroundTint="#4C9FC1" />
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
