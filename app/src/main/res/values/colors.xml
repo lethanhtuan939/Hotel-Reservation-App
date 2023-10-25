@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="setting_top_bg">#000B25</color>
+    <color name="setting_title_tab">#9F9C9C</color>
 </resources>
