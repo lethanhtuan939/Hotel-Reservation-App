@@ -40,6 +40,7 @@ a guarantee of conformity with photographs"
 
         <Button
             android:id="@+id/btnStart"
+            android:onClick="onButtonClick_start"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
