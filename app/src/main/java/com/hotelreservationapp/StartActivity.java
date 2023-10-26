@@ -12,9 +12,17 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        Button button = (Button) findViewById(R.id.btnStart);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this,Sign_In.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    public void onButtonClick_start(View view){
+/*    public void onButtonClick_start(View view) {
         setContentView(R.layout.activity_sign_in);
-    }
+    }*/
 }
