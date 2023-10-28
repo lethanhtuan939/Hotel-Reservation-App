@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hotelreservationapp.R;
 
@@ -21,7 +22,9 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        txtChange = findViewById(R.id.txtChange);
+        btnSaveChange = findViewById(R.id.btnSaveChange);
+        imgBack = findViewById(R.id.imgBack);
         mapping();
 
         txtChange.setPaintFlags(txtChange.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -29,19 +32,30 @@ public class ProfileActivity extends AppCompatActivity {
         btnSaveChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, SettingActivity.class);
+                Toast.makeText(ProfileActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, SettingActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        txtChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });
     }
+
 
     private void mapping() {
         txtChange = findViewById(R.id.txtChange);
