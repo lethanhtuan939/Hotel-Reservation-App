@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 
@@ -50,7 +52,16 @@ public class FavouriteActivity extends AppCompatActivity {
             list_hotel.add(new Hotel(i, name[i], image[i], false, acreage[i], rating[i]));
         }
         favouriteAdapter = new HotelAdapter(FavouriteActivity.this, R.layout.item_favourites_custom, list_hotel);
+
         listView_faVou.setAdapter(favouriteAdapter);
+        listView_faVou.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent  = new Intent(getApplicationContext(),RoomActivity.class);
+                startActivity(intent);
+            }
+        });
+
         BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
         navigationView.setSelectedItemId(R.id.btn_favourites);
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -70,5 +81,6 @@ public class FavouriteActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 }

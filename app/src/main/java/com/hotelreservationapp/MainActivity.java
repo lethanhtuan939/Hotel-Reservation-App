@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 import com.hotelreservationapp.activity.HomeActivity;
+import com.hotelreservationapp.activity.RoomActivity;
 import com.hotelreservationapp.activity.StartActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent  = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intent  = new Intent(getApplicationContext(), StartActivity.class);
                 startActivity(intent);
                 finish();
             }

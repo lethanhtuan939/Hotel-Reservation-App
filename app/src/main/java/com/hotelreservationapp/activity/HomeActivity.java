@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,9 +31,9 @@ public class HomeActivity extends AppCompatActivity {
             R.drawable.ex_hotel, R.drawable.ex_hotel, R.drawable.ex_hotel
     };
     String[] name = {
-            "Hotel Da Nang", "Hotel Da Nang", "Hotel Da Nang",
-            "Hotel Da Nang", "Hotel Da Nang", "Hotel Da Nang",
-            "Hotel Da Nang", "Hotel Da Nang", "Hotel Da Nang"
+            "Muong Thanh Hotel", "Muong Thanh Hotel", "Muong Thanh Hotel",
+            "Muong Thanh Hotel", "Muong Thanh Hotel", "Muong Thanh Hotel",
+            "Muong Thanh Hotel", "Muong Thanh Hotel", "Muong Thanh Hotel"
     };
     double[] acreage = {
             3, 3, 3,
@@ -51,16 +53,21 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         listView = findViewById(R.id.listHotel);
-
         list_hotels = new ArrayList<>();
-
         for (int i = 0; i < name.length; i++) {
             list_hotels.add(new Hotel(id[i], name[i], image[i], true, acreage[i], rating[i]));
         }
         hotelAdapter = new HotelAdapter(HomeActivity.this, R.layout.hotel_item, list_hotels);
         listView.setAdapter(hotelAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent  = new Intent(getApplicationContext(),RoomActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
         navigationView.setSelectedItemId(R.id.btn_home);
