@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/setting_list_icon"
+            android:id="@+id/history_tab_icon"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginStart="28dp"
@@ -34,7 +34,7 @@
             app:srcCompat="@drawable/user_icon" />
 
         <TextView
-            android:id="@+id/setting_list_title"
+            android:id="@+id/history_tab_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
@@ -43,19 +43,19 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/setting_list_icon"
+            app:layout_constraintStart_toEndOf="@+id/history_tab_icon"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/setting_list_des"
+            android:id="@+id/history_tab_des"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="56dp"
             android:layout_marginTop="16dp"
             android:text="View and Edit detail"
             android:textColor="@color/setting_title_tab"
-            app:layout_constraintStart_toEndOf="@+id/setting_list_icon"
-            app:layout_constraintTop_toBottomOf="@+id/setting_list_title" />
+            app:layout_constraintStart_toEndOf="@+id/history_tab_icon"
+            app:layout_constraintTop_toBottomOf="@+id/history_tab_title" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -64,7 +64,7 @@
             android:layout_marginTop="64dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.858"
-            app:layout_constraintStart_toEndOf="@+id/setting_list_title"
+            app:layout_constraintStart_toEndOf="@+id/history_tab_title"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/chevron_right" />
     </androidx.constraintlayout.widget.ConstraintLayout>

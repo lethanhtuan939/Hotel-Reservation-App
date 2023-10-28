@@ -65,13 +65,15 @@
             android:hint="Password" />
 
         <Button
+            android:id="@+id/btnSignin"
+            android:onClick="onButtonClickSiginin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custombtn_pc"
             android:text="SIGN IN"
             android:textColor="#FFFFFF"
             android:textSize="18dp"
-            app:backgroundTint="#4C9FC1"/>
+            app:backgroundTint="#4C9FC1" />
         <TextView
             android:id="@+id/forgot"
             android:onClick="onTextViewClick_forgot"
