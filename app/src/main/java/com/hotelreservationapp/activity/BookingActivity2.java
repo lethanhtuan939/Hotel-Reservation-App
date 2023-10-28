@@ -40,7 +40,7 @@ public class BookingActivity2 extends AppCompatActivity {
     }
 
     private void mapping() {
-        btnNext = findViewById(R.id.btnNext2);
-        imgBack = findViewById(R.id.imgBack);
+        btnNext = (Button) findViewById(R.id.btnNextStep2);
+        imgBack = (ImageView) findViewById(R.id.imgBack);
     }
 }

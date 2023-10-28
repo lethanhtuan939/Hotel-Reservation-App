@@ -37,7 +37,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     }
 
     private void mapping() {
-        btnSaveChange = findViewById(R.id.btnComplete);
+        btnSaveChange = findViewById(R.id.btnCompleteBooking);
         imgBack = findViewById(R.id.imgBack);
     }
 }

@@ -2,8 +2,10 @@ package com.hotelreservationapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -40,6 +42,14 @@ public class RoomActivity extends AppCompatActivity {
         }
         roomAdapter = new RoomAdapter(RoomActivity.this,R.layout.room_item,list_room);
         listView.setAdapter(roomAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                startActivity(intent);
+            }
+        });
 
         back = (ImageButton) findViewById(R.id.imgBack);
         back.setOnClickListener(new View.OnClickListener() {

@@ -23,7 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         txtChange = findViewById(R.id.txtChange);
-        btnSaveChange = findViewById(R.id.btnComplete);
+        btnSaveChange = findViewById(R.id.btnCompleteBooking);
         imgBack = findViewById(R.id.imgBack);
         mapping();
 
@@ -65,7 +65,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void mapping() {
         txtChange = findViewById(R.id.txtChange);
-        btnSaveChange = findViewById(R.id.btnComplete);
+        btnSaveChange = findViewById(R.id.btnCompleteBooking);
         imgBack = findViewById(R.id.imgBack);
     }
 }

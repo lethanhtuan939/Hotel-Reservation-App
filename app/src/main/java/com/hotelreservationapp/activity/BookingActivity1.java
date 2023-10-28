@@ -84,11 +84,11 @@ public class BookingActivity1 extends AppCompatActivity {
     }
 
     private void mapping() {
-        btnDateStart = findViewById(R.id.btnDateStart);
-        btnDateEnd = findViewById(R.id.btnDateEnd);
+        btnDateStart = (Button) findViewById(R.id.btnDateStart);
+        btnDateEnd = (Button) findViewById(R.id.btnDateEnd);
         txtDateStart = findViewById(R.id.txtDateStart);
         txtDateEnd = findViewById(R.id.txtDateEnd);
-        btnNext = findViewById(R.id.btnComplete);
-        imgBack = findViewById(R.id.imgBack);
+        btnNext = (Button) findViewById(R.id.btnCompleteBooking);
+        imgBack = (ImageView) findViewById(R.id.imgBack);
     }
 }

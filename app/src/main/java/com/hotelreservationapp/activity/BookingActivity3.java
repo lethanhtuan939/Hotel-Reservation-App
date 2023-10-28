@@ -39,7 +39,7 @@ public class BookingActivity3 extends AppCompatActivity {
     }
 
     private void mapping() {
-        btnComplete = findViewById(R.id.btnNext2);
+        btnComplete = (Button) findViewById(R.id.btnCompleteBooking);
         imgBack = findViewById(R.id.imgBack);
     }
 }
