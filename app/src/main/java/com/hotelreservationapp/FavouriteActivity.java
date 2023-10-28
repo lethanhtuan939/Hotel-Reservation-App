@@ -16,10 +16,6 @@ import com.hotelreservationapp.model.Hotel;
 import java.util.ArrayList;
 
 public class FavouriteActivity extends AppCompatActivity {
-    int[] id = {
-            1, 2, 3,
-            4, 5, 6
-    };
     int[] image = {
             R.drawable.ex_hotel, R.drawable.ex_hotel, R.drawable.ex_hotel,
             R.drawable.ex_hotel, R.drawable.ex_hotel, R.drawable.ex_hotel
@@ -39,15 +35,15 @@ public class FavouriteActivity extends AppCompatActivity {
     ArrayList<Hotel> list_hotel;
     ListView listView_faVou;
     HotelAdapter favouriteAdapter;
-    NavigationBarView navigationBarView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listView_faVou = findViewById(R.id.listFavourHotel);
         setContentView(R.layout.activity_favourite);
+        listView_faVou = findViewById(R.id.listFavourHotel);
         list_hotel = new ArrayList<>();
-        for (int i = 0; i < id.length; i++) {
-            list_hotel.add(new Hotel(id[i], name[i], image[i], true, acreage[i], rating[i]));
+        for (int i = 0; i < name.length; i++) {
+            list_hotel.add(new Hotel(i, name[i], image[i], false, acreage[i], rating[i]));
         }
         favouriteAdapter = new HotelAdapter(FavouriteActivity.this, R.layout.item_favourites_custom, list_hotel);
         listView_faVou.setAdapter(favouriteAdapter);
@@ -60,12 +56,11 @@ public class FavouriteActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.btn_favourites)
                     return true;
                 else if (item.getItemId() == R.id.btn_home) {
-                    Intent intent= new  Intent(getApplicationContext(),HomeActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
-                    finish();
 
                 } else if (item.getItemId() == R.id.btn_setting) {
-                    Intent intent= new  Intent(getApplicationContext(),SettingActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
                     startActivity(intent);
                 }
                 return false;
