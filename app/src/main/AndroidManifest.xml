@@ -16,6 +16,16 @@
             android:name=".activity.HistoryActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.RoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailActivity"
+            android:exported="false" />
+         <activity
+            android:name=".activity.BookingActivity3"
+            android:exported="false" />
+
+        <activity
             android:name=".activity.BookingActivity2"
             android:exported="false" />
         <activity
