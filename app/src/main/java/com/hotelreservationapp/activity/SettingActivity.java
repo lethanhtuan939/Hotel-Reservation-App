@@ -22,7 +22,7 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
+        BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
         navigationView.setSelectedItemId(R.id.btn_favourites);
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -55,7 +55,7 @@ public class SettingActivity extends AppCompatActivity {
         history_tab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SettingActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(SettingActivity.this, HistoryActivity.class);
                 startActivity(intent);
             }
         });

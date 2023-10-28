@@ -34,6 +34,7 @@ public class HotelAdapter extends ArrayAdapter<Hotel> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         convertView = layoutInflater.inflate(layout,null);
+
         Hotel hotel = hotels.get(position);
         ImageView imageView= convertView.findViewById(R.id.image);
         imageView.setImageResource(hotel.getImage());
@@ -43,6 +44,7 @@ public class HotelAdapter extends ArrayAdapter<Hotel> {
         textView_acreage.setText(String.valueOf(hotel.getAcreage()));
         TextView textView_rating = convertView.findViewById(R.id.rating);
         textView_rating.setText(String.valueOf(hotel.getRating()));
+
         return convertView;
     }
 }
