@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             >
             <ImageView
+                android:id="@+id/imgBack"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/baseline_arrow_back_24"
@@ -64,7 +65,7 @@
             android:hint="Password" />
 
         <Button
-            android:id="@+id/btnsingin"
+            android:id="@+id/btnSingin"
             android:onClick="onButtonClickSiginin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -122,7 +123,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="56dp"/>
             <TextView
-                android:id="@+id/txtsignup"
+                android:id="@+id/txtSignup"
                 android:onClick="onTextViewClick_signup"
                 android:layout_width="100dp"
                 android:layout_height="24dp"

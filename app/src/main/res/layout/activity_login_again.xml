@@ -73,7 +73,7 @@
             android:layout_marginTop="0dp"/>
 
         <Button
-            android:id="@+id/btnlogin"
+            android:id="@+id/btnHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btncustom"

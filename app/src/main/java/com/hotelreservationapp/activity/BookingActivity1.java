@@ -3,11 +3,13 @@ package com.hotelreservationapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.hotelreservationapp.R;
 
@@ -15,7 +17,8 @@ import java.util.Calendar;
 
 public class BookingActivity1 extends AppCompatActivity {
 
-    Button btnDateStart, btnDateEnd;
+    Button btnDateStart, btnDateEnd, btnNext;
+    ImageView imgBack;
     EditText txtDateStart, txtDateEnd;
     private int mYear, mMonth, mDay;
     @Override
@@ -62,6 +65,22 @@ public class BookingActivity1 extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BookingActivity1.this, BookingActivity2.class);
+                startActivity(intent);
+            }
+        });
+
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BookingActivity1.this, DetailActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void mapping() {
@@ -69,5 +88,7 @@ public class BookingActivity1 extends AppCompatActivity {
         btnDateEnd = findViewById(R.id.btnDateEnd);
         txtDateStart = findViewById(R.id.txtDateStart);
         txtDateEnd = findViewById(R.id.txtDateEnd);
+        btnNext = findViewById(R.id.btnComplete);
+        imgBack = findViewById(R.id.imgBack);
     }
 }

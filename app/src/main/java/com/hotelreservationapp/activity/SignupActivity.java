@@ -1,46 +1,39 @@
 package com.hotelreservationapp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hotelreservationapp.R;
 
-public class BookingActivity2 extends AppCompatActivity {
-
-    Button btnNext;
-
-    ImageView imgBack;
+public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booking2);
-
-        mapping();
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_sign_up);
+        Button btn = (Button) findViewById(R.id.btnSignup);
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BookingActivity2.this, BookingActivity3.class);
+                Intent intent = new Intent(getApplicationContext(), SigninActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
+        ImageView imgBack = findViewById(R.id.imgBack);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BookingActivity2.this, BookingActivity1.class);
+                Intent intent = new Intent(getApplicationContext(), SigninActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
-    }
-
-    private void mapping() {
-        btnNext = findViewById(R.id.btnNext2);
-        imgBack = findViewById(R.id.imgBack);
     }
 }
