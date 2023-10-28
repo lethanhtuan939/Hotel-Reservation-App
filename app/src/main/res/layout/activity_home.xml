@@ -7,6 +7,19 @@
     android:background="@color/main_bg"
     tools:context=".MainActivity">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/main_color"
+        app:itemIconTint="@color/customcolor_nav"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_nav"        />
+
     <TextView
         android:id="@+id/txt_uare"
         android:layout_width="wrap_content"
@@ -106,19 +119,7 @@
             android:textAlignment="center" />
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/conner"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -134,34 +135,34 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:backgroundTint="#00000000"
             android:padding="5dp"
-            android:text="linear"
+            android:text="Nổi bật"
+            android:textSize="18dp"
             android:textColor="@color/grey" />
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:backgroundTint="#00000000"
             android:padding="5dp"
-            android:text="linear"
+            android:text="Mới"
+            android:textSize="18dp"
             android:textColor="@color/grey" />
     </LinearLayout>
 
     <ListView
         android:id="@+id/listHotel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        android:layout_height="500dp"
         android:divider="@null"
         android:dividerHeight="0dp"
-        />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

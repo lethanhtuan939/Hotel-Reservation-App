@@ -1,10 +1,15 @@
 package com.hotelreservationapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.hotelreservationapp.adapter.SettingListAdapter;
 import com.hotelreservationapp.model.SettingList;
 
@@ -36,5 +41,25 @@ public class SettingActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.list_item_setting);
         listView.setAdapter(settingListAdapter);
+
+        BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
+        navigationView.setSelectedItemId(R.id.btn_setting);
+        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if (item.getItemId() == R.id.btn_setting)
+                    return true;
+                else if (item.getItemId() == R.id.btn_favourites) {
+                    Intent intent= new  Intent(getApplicationContext(),FavouriteActivity.class);
+                    startActivity(intent);
+
+                } else if (item.getItemId() == R.id.btn_home) {
+                    Intent intent= new  Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                }
+                return false;
+            }
+        });
     }
 }
