@@ -13,18 +13,15 @@
         android:theme="@style/Theme.HotelReservationApp"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".activity.RoomActivity"
             android:exported="false" />
         <activity
             android:name=".activity.DetailActivity"
-=======
+            android:exported="false" />
+         <activity
             android:name=".activity.BookingActivity3"
             android:exported="false" />
-        <activity
-            android:name=".activity.Booking3Activity"
->>>>>>> 6c68e72b7e8ae8cdb1feb5e7c19cd40d373354f1
-            android:exported="false" />
+
         <activity
             android:name=".activity.BookingActivity2"
             android:exported="false" />
