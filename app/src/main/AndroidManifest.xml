@@ -13,22 +13,37 @@
         android:theme="@style/Theme.HotelReservationApp"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".activity.HomeActivity1"
+=======
+            android:name=".activity.HistoryActivity"
+>>>>>>> ae9af96caf417a19cf55632929c17e7d69e46773
             android:exported="false" />
         <activity
             android:name=".activity.RoomActivity"
             android:exported="false" />
         <activity
             android:name=".activity.DetailActivity"
+<<<<<<< HEAD
             android:exported="false" />
         <activity
             android:name=".activity.BookingActivity3"
             android:exported="false" />
+=======
+            android:exported="false" />
+         <activity
+            android:name=".activity.BookingActivity3"
+            android:exported="false" />
+
+>>>>>>> ae9af96caf417a19cf55632929c17e7d69e46773
         <activity
             android:name=".activity.BookingActivity2"
             android:exported="false" />
         <activity
             android:name=".activity.BookingActivity1"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".activity.FavouriteActivity"

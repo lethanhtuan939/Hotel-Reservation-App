@@ -16,7 +16,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.hotelreservationapp.R;
 
-
 public class SettingActivity extends AppCompatActivity {
 
     ConstraintLayout profile_tab, history_tab, aboutus_tab;
@@ -25,6 +24,7 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
         mapping();
 
         BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
@@ -59,7 +59,8 @@ public class SettingActivity extends AppCompatActivity {
         history_tab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AboutUsActivity.class);
+                Intent intent = new Intent(SettingActivity.this, HistoryActivity.class);
+
                 startActivity(intent);
             }
         });
