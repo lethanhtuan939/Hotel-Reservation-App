@@ -5,20 +5,22 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg1"
-    tools:context=".StartActivity">
+    android:background="@drawable/bg_start"
+    tools:context=".activity.StartActivity">
 
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
+        android:layout_marginTop="150dp"
         android:background="@drawable/startboxcustom"
         android:orientation="vertical"
-        android:layout_marginTop="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.594"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.733">
 
         <TextView
             android:layout_width="match_parent"
@@ -30,8 +32,8 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
+            android:layout_width="187dp"
+            android:layout_height="86dp"
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:text="Long-term rental of villas with
