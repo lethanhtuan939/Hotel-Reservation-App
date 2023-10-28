@@ -37,9 +37,6 @@
             android:name=".activity.StartActivity"
             android:exported="false" />
         <activity
-            android:name=".deploy"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
