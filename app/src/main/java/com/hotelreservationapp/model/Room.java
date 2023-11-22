@@ -1,29 +1,30 @@
 package com.hotelreservationapp.model;
 
 public class Room {
-    private int idRoom;
+    private int id;
     private int floor;
     private int imgRoom;
     private int idHotel;
-    private int idSale;
+    private String state;
     private String roomType;
 
-    public Room(int idRoom, int floor, int imgRoom) {
-        this.idRoom = idRoom;
+    public Room(int id, int floor, int imgRoom, int idHotel, String state, String roomType) {
+        this.id = id;
         this.floor = floor;
         this.imgRoom = imgRoom;
-        this.idHotel = 1;
-        this.idSale = 1;
-        this.roomType = "";
+        this.idHotel = idHotel;
+        this.state = state;
+        this.roomType = roomType;
     }
+
     public Room() {
     }
     public int getIdRoom() {
-        return idRoom;
+        return id;
     }
 
     public void setIdRoom(int idRoom) {
-        this.idRoom = idRoom;
+        this.id = idRoom;
     }
 
     public int getFloor() {
@@ -50,14 +51,6 @@ public class Room {
         this.idHotel = idHotel;
     }
 
-    public int getIdSale() {
-        return idSale;
-    }
-
-    public void setIdSale(int idSale) {
-        this.idSale = idSale;
-    }
-
     public String getRoomType() {
         return roomType;
     }
@@ -66,5 +59,11 @@ public class Room {
         this.roomType = roomType;
     }
 
+    public String getState() {
+        return state;
+    }
 
+    public void setState(String state) {
+        this.state = state;
+    }
 }

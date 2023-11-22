@@ -37,26 +37,6 @@ public class RoomActivity extends AppCompatActivity {
 
         list_room = new ArrayList<Room>();
 
-        for (int i = 0; i < image.length; i++) {
-            list_room.add(new Room(i, i, image[i]));
-        }
-        roomAdapter = new RoomAdapter(RoomActivity.this,R.layout.room_item,list_room);
-        listView.setAdapter(roomAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        back = (ImageButton) findViewById(R.id.imgBack);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 }
