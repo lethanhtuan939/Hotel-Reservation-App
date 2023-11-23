@@ -1,29 +1,55 @@
 package com.hotelreservationapp.model;
 
-public class Room {
-    private int id;
-    private int floor;
-    private int imgRoom;
-    private int idHotel;
-    private String state;
-    private String roomType;
+import java.io.Serializable;
 
-    public Room(int id, int floor, int imgRoom, int idHotel, String state, String roomType) {
+public class Room implements Serializable {
+
+    private int id;
+    private  String name;
+    private int floor;
+    private String imgRoom;
+    private Hotel Hotel;
+    private String state;
+    private  double sale;
+    private RoomType roomType;
+    private  double price;
+
+
+    public Room(int id, String name,int floor, String imgRoom, Hotel Hotel, String state, double sale, RoomType roomType, double price) {
         this.id = id;
+        this.name = name;
         this.floor = floor;
         this.imgRoom = imgRoom;
-        this.idHotel = idHotel;
+        this.Hotel = Hotel;
         this.state = state;
+        this.sale = sale;
         this.roomType = roomType;
+        this.price = price;
     }
-
     public Room() {
     }
-    public int getIdRoom() {
+    public double getSale() {
+        return sale;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSale(double sale) {
+        this.sale = sale;
+    }
+
+
+    public int getId() {
         return id;
     }
 
-    public void setIdRoom(int idRoom) {
+    public void setId(int idRoom) {
         this.id = idRoom;
     }
 
@@ -35,27 +61,27 @@ public class Room {
         this.floor = floor;
     }
 
-    public int getImgRoom() {
+    public String getImgRoom() {
         return imgRoom;
     }
 
-    public void setImgRoom(int imgRoom) {
+    public void setImgRoom(String imgRoom) {
         this.imgRoom = imgRoom;
     }
 
-    public int getIdHotel() {
-        return idHotel;
+    public com.hotelreservationapp.model.Hotel getHotel() {
+        return Hotel;
     }
 
-    public void setIdHotel(int idHotel) {
-        this.idHotel = idHotel;
+    public void setHotel(com.hotelreservationapp.model.Hotel hotel) {
+        Hotel = hotel;
     }
 
-    public String getRoomType() {
+    public RoomType getRoomType() {
         return roomType;
     }
 
-    public void setRoomType(String roomType) {
+    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
 
@@ -65,5 +91,13 @@ public class Room {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

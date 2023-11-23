@@ -1,8 +1,9 @@
 package com.hotelreservationapp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Location {
+public class Location implements Serializable {
     private int id;
     private String name;
     private List<User> users;
@@ -16,6 +17,11 @@ public class Location {
         this.name = name;
         this.users = users;
         this.hotels = hotels;
+    }
+
+    public Location(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public int getId() {
@@ -48,5 +54,10 @@ public class Location {
 
     public void setHotels(List<Hotel> hotels) {
         this.hotels = hotels;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
     }
 }

@@ -48,30 +48,30 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-        profile_tab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(intent);
-            }
-        });
+//        profile_tab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
-        history_tab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SettingActivity.this, HistoryActivity.class);
-
-                startActivity(intent);
-            }
-        });
-
-        aboutus_tab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AboutUsActivity.class);
-                startActivity(intent);
-            }
-        });
+//        history_tab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(SettingActivity.this, HistoryActivity.class);
+//
+//                startActivity(intent);
+//            }
+//        });
+//
+//        aboutus_tab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), AboutUsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 

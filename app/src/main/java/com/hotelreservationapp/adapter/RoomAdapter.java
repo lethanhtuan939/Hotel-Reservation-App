@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import com.hotelreservationapp.R;
 import com.hotelreservationapp.model.Hotel;
 import com.hotelreservationapp.model.Room;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,10 +38,20 @@ public class RoomAdapter extends ArrayAdapter<Room> {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         convertView = layoutInflater.inflate(layout,null);
         Room room = rooms.get(position);
+        TextView name = convertView.findViewById(R.id.nRoom);
+        name.setText("Phòng " + room.getName());
         ImageView imageView= convertView.findViewById(R.id.imgRoom);
-        imageView.setImageResource(room.getImgRoom());
+        Picasso.get().load(room.getImgRoom()).into(imageView);
         TextView txt_floor = convertView.findViewById(R.id.txt_floor);
         txt_floor.setText(String.valueOf(room.getFloor()));
+        TextView sale = convertView.findViewById(R.id.txt_sale);
+        sale.setText(String.valueOf(room.getSale()));
+        TextView status = convertView.findViewById(R.id.txt_status);
+        status.setText(room.getState());
+        TextView roomType = convertView.findViewById(R.id.roomType);
+        roomType.setText(room.getRoomType().getName());
+        TextView price = convertView.findViewById(R.id.txt_price);
+        price.setText(String.valueOf(room.getPrice()));
         return convertView;
     }
 }

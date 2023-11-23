@@ -1,23 +1,34 @@
 package com.hotelreservationapp.model;
 
-public class Hotel {
+import java.io.Serializable;
+
+public class Hotel implements Serializable {
     private int id;
     private String name;
-    private  int image;
+    private  String image;
     private boolean active;
     private double acreage;
     private double rating;
 
+    private Location location;
+
     public Hotel() {
     }
 
-    public Hotel(int id, String name, int image, boolean active, double acreage, double rating) {
+    public Hotel(int id, String name, String image, boolean active, double acreage, double rating, Location location) {
         this.id = id;
         this.name = name;
         this.image = image;
         this.active = active;
         this.acreage = acreage;
         this.rating = rating;
+        this.location = location;
+    }
+
+    public Hotel(int id, String name, Location location) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
     }
 
     public int getId() {
@@ -28,7 +39,7 @@ public class Hotel {
         return name;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
@@ -52,7 +63,7 @@ public class Hotel {
         this.name = name;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -66,5 +77,13 @@ public class Hotel {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

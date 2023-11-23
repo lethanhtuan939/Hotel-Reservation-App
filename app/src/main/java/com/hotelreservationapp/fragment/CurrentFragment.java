@@ -73,7 +73,7 @@ public class CurrentFragment extends Fragment {
 
             Hotel hotel = list_hotels.get(position);
             ImageView imageView= convertView.findViewById(R.id.image);
-            imageView.setImageResource(hotel.getImage());
+      //      imageView.setImageResource(hotel.getImage());
             TextView textView_name = convertView.findViewById(R.id.name);
             textView_name.setText(hotel.getName());
             TextView textView_acreage = convertView.findViewById(R.id.acreage);
