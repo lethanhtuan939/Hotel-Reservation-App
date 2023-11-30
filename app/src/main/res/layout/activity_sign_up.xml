@@ -50,14 +50,32 @@
         android:padding="16dp">
 
         <EditText
+            android:id="@+id/edtEmailSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="10dp"
+            android:inputType="textEmailAddress"
             android:background="@drawable/customedittext_pc"
             android:hint="Email" />
 
+        <TextView
+            android:id="@+id/txtEmailMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:textColor="@color/red"
+            android:textSize="16dp" />
+
         <EditText
+            android:id="@+id/edtNameSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/customedittext_pc"
+            android:hint="Name"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -65,18 +83,30 @@
             android:hint="Mobile number" />
 
         <EditText
+            android:id="@+id/edtSignupPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/customedittext_pc"
             android:hint="Password" />
 
         <EditText
+            android:id="@+id/edtRepeatPasswordSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@drawable/customedittext_pc"
-            android:hint="Confirm Password" />
+            android:hint="Repeat Password" />
+
+        <TextView
+            android:id="@+id/txtPasswordMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textSize="16dp"
+            android:textColor="@color/red"
+            />
 
         <Button
             android:id="@+id/btnSignup"
@@ -95,31 +125,27 @@
             android:text="or"
             android:layout_marginTop="15dp"
             android:textSize="18dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="continue with your account"
-            android:textColor="#868686"
-            android:layout_marginTop="10dp"
-            android:textSize="18dp"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
-            >
-            <ImageButton
-                android:layout_width="128dp"
-                android:layout_height="43dp"
-                android:background="@drawable/img_signup_fb_pc"
-                android:layout_marginTop="0dp"
-                android:layout_marginLeft="35dp"/>
-            <ImageButton
-                android:layout_width="128dp"
-                android:layout_height="43dp"
-                android:background="@drawable/img_singup_gm_pc"
-                android:layout_marginLeft="55dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Đã có tài khoản?"
+                android:textSize="18dp"
+                android:layout_marginLeft="56dp"/>
+            <TextView
+                android:id="@+id/txtSignin"
+                android:onClick="onTextViewClick_signup"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Đăng nhập"
+                android:textSize="18dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#4C9FC1"/>
         </LinearLayout>
 
     </LinearLayout>

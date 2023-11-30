@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -13,16 +12,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.hotelreservationapp.Constant;
+import com.hotelreservationapp.utils.Constant;
 import com.hotelreservationapp.R;
 import com.hotelreservationapp.adapter.HotelAdapter;
 import com.hotelreservationapp.model.Hotel;
 import com.hotelreservationapp.model.Location;
+import com.hotelreservationapp.model.User;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +34,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -40,6 +43,7 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
     ArrayList<Hotel> list_hotels;
     ListView listView;
+    ImageView avt;
     HotelAdapter hotelAdapter;
     AutoCompleteTextView autoCompleteTextView;
     ArrayAdapter<String> adapter;
@@ -52,16 +56,24 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         listView = findViewById(R.id.listHotel);
+        avt = findViewById(R.id.avatar);
         list_hotels = new ArrayList<>();
+
+        //set avatar
+        User user = getUser();
+        Picasso.get().load(user.getImage()).into(avt);
+
         new FetchData("").start();
-        hotelAdapter = new HotelAdapter(HomeActivity.this, R.layout.hotel_item, list_hotels);
+        hotelAdapter = new HotelAdapter(HomeActivity.this, R.layout.hotel_item, list_hotels, user.getId());
         listView.setAdapter(hotelAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
-                intent.putExtra("hotel", list_hotels.get(position));
-                startActivity(intent);
+                if (!(view instanceof CheckBox)) {
+                    Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
+                    intent.putExtra("hotel", list_hotels.get(position));
+                    startActivity(intent);
+                }
             }
         });
         BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
@@ -75,9 +87,11 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 else if (item.getItemId() == R.id.btn_setting) {
                     Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+
                     startActivity(intent);
                 } else if (item.getItemId() == R.id.btn_favourites) {
                     Intent intent = new Intent(getApplicationContext(), FavouriteActivity.class);
+                    intent.putExtra("user_favorite", user);
                     startActivity(intent);
                 }
                 return false;
@@ -103,7 +117,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     class FetchData extends Thread {
@@ -177,9 +190,16 @@ public class HomeActivity extends AppCompatActivity {
                     if (progressDialog.isShowing()) {
                         progressDialog.dismiss();
                     }
+                    adapter.notifyDataSetChanged();
                 }
             });
         }
+    }
+
+    private User getUser() {
+        Intent intent = getIntent();
+        User user = (User) intent.getSerializableExtra("user");
+        return user;
     }
 
 }

@@ -1,8 +1,18 @@
 package com.hotelreservationapp.model;
 
+import android.os.Build;
+
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 import java.util.Date;
 
-public class Reservation {
+public class Reservation implements Serializable {
     private int id;
 
     private Date bookingDate;
@@ -39,6 +49,13 @@ public class Reservation {
         this.room = room;
     }
 
+    public Reservation(Room room, User user, Date bookingDate, double price) {
+        this.bookingDate = bookingDate;
+        this.price = price;
+        this.user = user;
+        this.room = room;
+    }
+
     public int getId() {
         return id;
     }
@@ -59,12 +76,12 @@ public class Reservation {
         return dayStart;
     }
 
-    public void setDayStart(Date dayStart) {
-        this.dayStart = dayStart;
-    }
-
     public Date getDayEnd() {
         return dayEnd;
+    }
+
+    public void setDayStart(Date dayStart) {
+        this.dayStart = dayStart;
     }
 
     public void setDayEnd(Date dayEnd) {
@@ -117,5 +134,37 @@ public class Reservation {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", bookingDate=" + bookingDate +
+                ", dayStart=" + dayStart +
+                ", dayEnd=" + dayEnd +
+                ", price=" + price +
+                ", status='" + status + '\'' +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                ", notes='" + notes + '\'' +
+                ", user=" + user +
+                ", room=" + room +
+                '}';
+    }
+
+    public double totalPrice() {
+        long diff = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalDate localStartDate = this.dayStart.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate localEndDate = this.dayEnd.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            Duration duration = Duration.between(localStartDate.atStartOfDay(), localEndDate.atStartOfDay());
+
+            diff = duration.toDays();
+        }
+
+        this.price = diff * ((1 - this.room.getSale()/100) * this.room.getPrice());
+
+        return this.price;
     }
 }

@@ -33,6 +33,7 @@
             android:text="ten khach san"
             android:textColor="@color/main_color"
             android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/image"
             app:layout_constraintTop_toBottomOf="@+id/image" />
 
@@ -82,30 +83,32 @@
                     android:textSize="20dp" />
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <ImageView
-            android:id="@+id/favou"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="12dp"
-            android:background="@drawable/favorite"
-            android:backgroundTint="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/image"
-            app:layout_constraintTop_toTopOf="@id/image" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/txt_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="44dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:text="Da nang"
             android:textColor="@color/black"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image" />
+
+        <CheckBox
+            android:id="@+id/favou"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            android:button="@drawable/wishlist_item"
+            android:theme="@style/Platform.MaterialComponents.Light"
+            android:focusable="false"
+            app:layout_constraintEnd_toEndOf="@+id/image"
+            app:layout_constraintTop_toTopOf="@id/image" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

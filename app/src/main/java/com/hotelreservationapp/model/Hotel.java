@@ -5,11 +5,10 @@ import java.io.Serializable;
 public class Hotel implements Serializable {
     private int id;
     private String name;
-    private  String image;
+    private String image;
     private boolean active;
     private double acreage;
     private double rating;
-
     private Location location;
 
     public Hotel() {
@@ -23,6 +22,12 @@ public class Hotel implements Serializable {
         this.acreage = acreage;
         this.rating = rating;
         this.location = location;
+    }
+
+    public Hotel(String name, String image,double rating) {
+        this.name = name;
+        this.image = image;
+        this.rating = rating;
     }
 
     public Hotel(int id, String name, Location location) {
@@ -85,5 +90,18 @@ public class Hotel implements Serializable {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", active=" + active +
+                ", acreage=" + acreage +
+                ", rating=" + rating +
+                ", location=" + location +
+                '}';
     }
 }

@@ -100,4 +100,19 @@ public class Room implements Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", floor=" + floor +
+                ", imgRoom='" + imgRoom + '\'' +
+                ", Hotel=" + Hotel +
+                ", state='" + state + '\'' +
+                ", sale=" + sale +
+                ", roomType=" + roomType +
+                ", price=" + price +
+                '}';
+    }
 }

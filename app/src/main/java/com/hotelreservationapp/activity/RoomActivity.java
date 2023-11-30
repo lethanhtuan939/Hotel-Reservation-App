@@ -12,9 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.hotelreservationapp.Constant;
+import com.hotelreservationapp.utils.Constant;
 import com.hotelreservationapp.R;
-import com.hotelreservationapp.adapter.HotelAdapter;
 import com.hotelreservationapp.adapter.RoomAdapter;
 import com.hotelreservationapp.model.Hotel;
 import com.hotelreservationapp.model.Location;
@@ -33,7 +32,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class RoomActivity extends AppCompatActivity {
 

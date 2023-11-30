@@ -7,24 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.hotelreservationapp.Constant;
 import com.hotelreservationapp.R;
-import com.hotelreservationapp.model.Hotel;
-import com.hotelreservationapp.model.Location;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Serializable;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -36,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, HomeActivity.class);
+                Intent intent = new Intent(StartActivity.this, SigninActivity.class);
 
                 startActivity(intent);
             }

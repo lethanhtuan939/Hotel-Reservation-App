@@ -37,6 +37,7 @@
             android:layout_height="117dp"
             android:layout_marginTop="15dp"
             android:scaleType="centerCrop"
+
             android:src="@drawable/bg_pc"/>
     </LinearLayout>
 
@@ -44,29 +45,49 @@
         android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="521dp"
-        android:layout_marginTop="211dp"
+        android:layout_marginTop="200dp"
         android:background="@color/white"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <EditText
+        <TextView
+            android:id="@+id/result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:textColor="@color/red"
+            android:gravity="center"
+            android:textSize="15dp"/>
+
+        <EditText
+            android:id="@+id/user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/customedittext_pc"
             android:hint="Email" />
 
         <EditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:background="@drawable/customedittext_pc"
-            android:hint="Password" />
+            android:hint="Password"
+            />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="200dp"
+            android:layout_height="34dp"
+            android:layout_marginLeft="20dp"
+            android:text="Remember me"
+            android:layout_marginBottom="15dp"
+            android:textSize="15dp"
+            android:textStyle="italic"/>
 
         <Button
             android:id="@+id/btnSingin"
-            android:onClick="onButtonClickSiginin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custombtn_pc"
@@ -84,32 +105,7 @@
             android:text="Forgot your password?"
             android:layout_marginTop="30dp"
             android:textSize="18dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Or"
-            android:textColor="#000000"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <ImageButton
-                android:layout_width="128dp"
-                android:layout_height="43dp"
-                android:background="@drawable/img_signin_fb_pc"
-                android:layout_marginTop="0dp"
-                android:layout_marginLeft="35dp"/>
-            <ImageButton
-                android:layout_width="128dp"
-                android:layout_height="43dp"
-                android:background="@drawable/img_signin_gm_pc"
-                android:layout_marginLeft="55dp"/>
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="34dp"
@@ -118,16 +114,16 @@
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="24dp"
-                android:text="Don't Have An Account?"
+                android:text="Chưa có tài khoản?"
                 android:textSize="18dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="56dp"/>
             <TextView
-                android:id="@+id/txtSignup"
+                android:id="@+id/txtSignin"
                 android:onClick="onTextViewClick_signup"
                 android:layout_width="100dp"
                 android:layout_height="24dp"
-                android:text="Sign up"
+                android:text="Đăng ký"
                 android:textSize="18dp"
                 android:layout_marginTop="5dp"
                 android:textColor="#4C9FC1"/>

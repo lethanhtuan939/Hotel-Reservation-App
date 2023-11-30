@@ -18,4 +18,5 @@ public class CanceledFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_canceled, container, false);
     }
+
 }

@@ -1,8 +1,9 @@
 package com.hotelreservationapp.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public class User {
+public class User implements Serializable {
     private int id;
     private String name;
     private String email;
@@ -28,6 +29,22 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.location = location;
         this.roles = roles;
+    }
+
+    public User(int id, String name, String email, String password, String image, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.image = image;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public User(int id, String name, String email, String phoneNumber) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public int getId() {
@@ -108,5 +125,21 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", image='" + image + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", location=" + location +
+                ", roles=" + roles +
+                '}';
     }
 }

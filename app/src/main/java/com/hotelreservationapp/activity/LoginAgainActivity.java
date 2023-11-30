@@ -22,7 +22,6 @@ public class LoginAgainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SigninActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 

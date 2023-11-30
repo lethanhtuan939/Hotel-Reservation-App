@@ -17,11 +17,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/custombtn_pc"
         android:text="Next Step ->"
         android:textSize="18dp"
         app:backgroundTint="#4C9FC1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,16 +114,17 @@
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_marginTop="92dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view8"
         app:srcCompat="@drawable/ex_room" />
 
     <TextView
-        android:id="@+id/txtHotel"
+        android:id="@+id/txtHotel_s2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -135,14 +137,14 @@
         app:layout_constraintVertical_bias="0.312" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/txtName_s2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:text="DA NANG"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHotel" />
+        app:layout_constraintTop_toBottomOf="@+id/txtHotel_s2" />
 
     <View
         android:id="@+id/view11"
@@ -167,7 +169,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPhoneCustomer" />
 
     <View
         android:id="@+id/view12"
@@ -200,7 +202,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginEnd="50dp"
         android:text="Good"
         android:textSize="16dp"
         android:textStyle="bold"
@@ -248,11 +250,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="94dp"
         android:text="Single Room"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.741"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view11" />
 
     <TextView
@@ -260,23 +261,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="94dp"
         android:text="Wed, 23 Sep"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.736"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtRoomType" />
 
     <TextView
-        android:id="@+id/txtCheckin2"
+        android:id="@+id/txtCheckout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="94dp"
         android:text="Fri, 25 Sep"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.706"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCheckin" />
 
     <TextView
@@ -304,7 +303,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtFrom" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/txtRawPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -322,29 +321,26 @@
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="66dp"
         android:layout_marginTop="44dp"
-        android:layout_marginEnd="144dp"
+        android:layout_marginEnd="122dp"
         android:text="$ 0"
         android:textColor="#00BCD4"
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/txtTax"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        app:layout_constraintTop_toBottomOf="@+id/txtRawPrice" />
 
     <TextView
-        android:id="@+id/textView34"
+        android:id="@+id/txtTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="122dp"
         android:text="$ 100"
         android:textColor="#00BCD4"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView33"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
     <TextView
@@ -403,7 +399,7 @@
         android:layout_marginBottom="10dp"
         android:text="Name:"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
+        app:layout_constraintBottom_toTopOf="@+id/txtCustomer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
@@ -416,10 +412,10 @@
         android:text="Mobile phone number:"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCustomer" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/txtCustomer"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -437,7 +433,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/txtPhoneCustomer"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -477,13 +473,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView36">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rdCash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pay by cash" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/rdCredit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pay by credit card" />

@@ -55,22 +55,15 @@
             android:src="@drawable/img_successfull_pc"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"/>
+
         <TextView
+            android:id="@+id/textView39"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please check your Email"
-            android:textSize="18dp"
-            android:textColor="#868686"
-            android:gravity="center"
-            android:layout_marginTop="20dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="forgot password reset instrustions"
-            android:textSize="18dp"
-            android:textColor="#868686"
-            android:gravity="center"
-            android:layout_marginTop="0dp"/>
+            android:text="Đổi mật khẩu thành công, mời đăng nhập lại" />
 
         <Button
             android:id="@+id/btnHome"

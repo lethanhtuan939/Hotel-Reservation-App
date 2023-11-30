@@ -31,4 +31,13 @@ public class RoomType implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "RoomType{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", rooms=" + rooms +
+                '}';
+    }
 }
