@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.hotelreservationapp.utils.Constant;
 import com.hotelreservationapp.R;
@@ -31,7 +32,8 @@ import retrofit2.Response;
 public class SigninActivity extends AppCompatActivity {
     private ImageView imgBack;
     private TextView forgotPassword, txtSignup, result;
-    private EditText edt_email, edt_pass;
+    private EditText edt_email;
+    private EditText edt_pass;
     private Button btn_loGin;
     private CheckBox checkBox;
     private SharedPreferences sharedPreferences;
@@ -48,6 +50,7 @@ public class SigninActivity extends AppCompatActivity {
 
         edt_email.setText(user_text);
         edt_pass.setText(pass_text);
+
 
         btn_loGin.setOnClickListener(new View.OnClickListener() {
             @Override

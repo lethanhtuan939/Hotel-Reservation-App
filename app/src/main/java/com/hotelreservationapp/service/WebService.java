@@ -51,9 +51,6 @@ public interface WebService {
     @POST("reservation")
     Call<ResponseObject> reservation(@Body Reservation reservation);
 
-    @POST("reservation/")
-    Call<ResponseObject> reservation2(@Query("data") String reservation);
-
     @POST("favorite/add")
     Call<ResponseObject> addFavourite(@Query("user") int userId, @Query("hotel") int hotelId);
 
@@ -66,6 +63,12 @@ public interface WebService {
     @PUT("users/{id}")
     Call<ResponseObject> updateUser(@Path("id") int id, @Query("data") String user);
 
+    @PUT("users/{id}")
+    Call<ResponseObject> updateUserWithFile(@Path("id") int id, @Query("data") String user);
+
     @GET("users/{id}")
     Call<ResponseObject> getUserById(@Path("id") int id);
+
+    @GET("reservation/{user}")
+    Call<ResponseObject> getReservationsByStatusAndUser(@Path("user") int id, @Query("status") String status);
 }

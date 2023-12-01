@@ -207,8 +207,8 @@
         android:id="@+id/saleper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
         android:text="price "
         android:textColor="@color/grey"
         android:textSize="15dp"
@@ -216,7 +216,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/sale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -226,10 +226,10 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sale" />
+        app:layout_constraintTop_toBottomOf="@+id/price" />
 
     <TextView
-        android:id="@+id/sale"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"

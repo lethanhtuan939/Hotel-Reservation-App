@@ -13,4 +13,9 @@ public class Constant {
                 + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
                 + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
     }
+
+    public static final String STATUS_PENDING = "ĐANG CHỜ";
+    public static final String STATUS_COMPLETED = "ĐÃ XONG";
+    public static final String STATUS_CANCELED = "ĐÃ HỦY";
+    public static final String STATUS_ACCEPTED = "ĐÃ CHẤP NHẬN";
 }

@@ -2,7 +2,10 @@ package com.hotelreservationapp.model;
 
 import android.os.Build;
 
+import com.hotelreservationapp.utils.DateUtil;
+
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -15,11 +18,11 @@ import java.util.Date;
 public class Reservation implements Serializable {
     private int id;
 
-    private Date bookingDate;
+    private String bookingDate;
 
-    private Date dayStart;
+    private String dayStart;
 
-    private Date dayEnd;
+    private String dayEnd;
 
     private double price;
 
@@ -36,7 +39,7 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public Reservation(int id, Date bookingDate, Date dayStart, Date dayEnd, double price, String status, String paymentMethod, String notes, User user, Room room) {
+    public Reservation(int id, String bookingDate, String dayStart, String dayEnd, double price, String status, String paymentMethod, String notes, User user, Room room) {
         this.id = id;
         this.bookingDate = bookingDate;
         this.dayStart = dayStart;
@@ -49,7 +52,7 @@ public class Reservation implements Serializable {
         this.room = room;
     }
 
-    public Reservation(Room room, User user, Date bookingDate, double price) {
+    public Reservation(Room room, User user, String bookingDate, double price) {
         this.bookingDate = bookingDate;
         this.price = price;
         this.user = user;
@@ -64,27 +67,27 @@ public class Reservation implements Serializable {
         this.id = id;
     }
 
-    public Date getBookingDate() {
+    public String getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(Date bookingDate) {
+    public void setBookingDate(String bookingDate) {
         this.bookingDate = bookingDate;
     }
 
-    public Date getDayStart() {
+    public String getDayStart() {
         return dayStart;
     }
 
-    public Date getDayEnd() {
+    public String getDayEnd() {
         return dayEnd;
     }
 
-    public void setDayStart(Date dayStart) {
+    public void setDayStart(String dayStart) {
         this.dayStart = dayStart;
     }
 
-    public void setDayEnd(Date dayEnd) {
+    public void setDayEnd(String dayEnd) {
         this.dayEnd = dayEnd;
     }
 
@@ -152,18 +155,18 @@ public class Reservation implements Serializable {
                 '}';
     }
 
-    public double totalPrice() {
+    public double totalPrice() throws ParseException {
         long diff = 0;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            LocalDate localStartDate = this.dayStart.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            LocalDate localEndDate = this.dayEnd.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate localStartDate = DateUtil.formatToDate(this.dayStart, "yyyy-MM-dd").toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate localEndDate = DateUtil.formatToDate(this.dayEnd, "yyyy-MM-dd").toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
             Duration duration = Duration.between(localStartDate.atStartOfDay(), localEndDate.atStartOfDay());
 
             diff = duration.toDays();
         }
 
-        this.price = diff * ((1 - this.room.getSale()/100) * this.room.getPrice());
+        this.price = Math.abs(diff) * ((1 - this.room.getSale()/100) * this.room.getPrice());
 
         return this.price;
     }

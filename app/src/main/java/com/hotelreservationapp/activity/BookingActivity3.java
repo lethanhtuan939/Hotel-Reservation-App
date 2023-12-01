@@ -43,7 +43,7 @@ public class BookingActivity3 extends AppCompatActivity {
         txtRoomType_s3.setText(reservation.getRoom().getName());
         txt_location_s3.setText(reservation.getRoom().getHotel().getLocation().getName());
         txtRoomType_s3.setText(reservation.getRoom().getRoomType().getName());
-        txtFromTo.setText("Từ ngày " + DateUtil.formatToString(reservation.getDayStart(), "yyyy-MM-dd") + " đến ngày " + DateUtil.formatToString(reservation.getDayEnd(), "yyyy-MM-dd"));
+        txtFromTo.setText("Từ ngày " + reservation.getDayStart() + " đến ngày " + reservation.getDayEnd());
         txtMoney.setText(reservation.getPrice() + " $");
         Picasso.get().load(reservation.getRoom().getImgRoom()).into(imgb3_room);
 

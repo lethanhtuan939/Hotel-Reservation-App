@@ -2,6 +2,7 @@ package com.hotelreservationapp.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,71 +18,80 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.hotelreservationapp.R;
 import com.hotelreservationapp.adapter.HotelAdapter;
+import com.hotelreservationapp.adapter.ReservationAdapter;
+import com.hotelreservationapp.callback.ReservationCallback;
 import com.hotelreservationapp.model.Hotel;
+import com.hotelreservationapp.model.Reservation;
+import com.hotelreservationapp.request.ResponseObject;
+import com.hotelreservationapp.service.ReservationService;
+import com.hotelreservationapp.service.WebService;
+import com.hotelreservationapp.utils.Constant;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CurrentFragment extends Fragment {
-
-    int[] id = {
-            1, 2, 3
-    };
-    int[] image = {
-            R.drawable.ex_hotel, R.drawable.ex_hotel, R.drawable.ex_hotel
-    };
-    String[] name = {
-            "Hotel Da Nang", "Hotel Da Nang", "Hotel Da Nang"
-    };
-    double[] acreage = {
-            3, 3, 3
-    };
-    double[] rating = {
-            5, 5 , 5
-    };
-
-    ArrayList<Hotel> list_hotels;
+    List<Reservation> reservations;
+    ListView currentList;
+    SharedPreferences sharedPreferences;
 
     public CurrentFragment() {
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_current, container, false);
+        currentList = view.findViewById(R.id.current_list);
+        sharedPreferences = getActivity().getSharedPreferences("data_user", Context.MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("id", 2);
 
-//        list_hotels = new ArrayList<>();
-//        for (int i = 0; i < name.length; i++) {
-//            list_hotels.add(new Hotel(id[i], name[i], image[i], true, acreage[i], rating[i]));
-//        }
-//        ListView listView = view.findViewById(R.id.current_list);
-//        listView.setAdapter(new CurrentAdapter(getContext(), R.layout.item_favourites_custom, list_hotels));
+        fetchCurrentReservation(Constant.STATUS_PENDING, userId, new ReservationCallback() {
+            @Override
+            public void onReservationsFetched(List<Reservation> reservations) {
+                ReservationAdapter reservationAdapter = new ReservationAdapter(getContext(), reservations);
+                currentList.setAdapter(reservationAdapter);
+            }
+        });
+
+//        fetchCurrentReservation(Constant.STATUS_ACCEPTED, userId, new ReservationCallback() {
+//            @Override
+//            public void onReservationsFetched(List<Reservation> reservations) {
+//                ReservationAdapter reservationAdapter = new ReservationAdapter(getContext(), reservations);
+//                currentList.setAdapter(reservationAdapter);
+//            }
+//        });
 
         return view;
     }
 
-    class CurrentAdapter extends ArrayAdapter {
 
-        public CurrentAdapter(@NonNull Context context, int resource, ArrayList<Hotel> objects) {
-            super(context, resource, objects);
-        }
+    public void fetchCurrentReservation(String status, int userId, ReservationCallback callback) {
+        WebService.api.getReservationsByStatusAndUser(userId, status).enqueue(new Callback<ResponseObject>() {
+            @Override
+            public void onResponse(Call<ResponseObject> call, Response<ResponseObject> response) {
+                ResponseObject responseObject = response.body();
+                Gson gson = new Gson();
+                String json = gson.toJson(responseObject);
 
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            convertView = ((FragmentActivity) getContext()).getLayoutInflater().inflate(R.layout.fragment_current, null);
+                try {
+                    reservations = ReservationService.getReservationFromJson(json);
+                    callback.onReservationsFetched(reservations);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
 
-            Hotel hotel = list_hotels.get(position);
-            ImageView imageView= convertView.findViewById(R.id.image);
-      //      imageView.setImageResource(hotel.getImage());
-            TextView textView_name = convertView.findViewById(R.id.name);
-            textView_name.setText(hotel.getName());
-            TextView textView_acreage = convertView.findViewById(R.id.acreage);
-            textView_acreage.setText(String.valueOf(hotel.getAcreage()));
-            TextView textView_rating = convertView.findViewById(R.id.rating);
-            textView_rating.setText(String.valueOf(hotel.getRating()));
-
-            return convertView;
-        }
+            @Override
+            public void onFailure(Call<ResponseObject> call, Throwable t) {
+            }
+        });
     }
 }

@@ -79,7 +79,6 @@ public class ProfileActivity extends AppCompatActivity {
         btnSaveChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 saveChange();
             }
         });
@@ -115,7 +114,6 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if(resultCode == RESULT_OK && requestCode == GALLERY_REQ_CODE) {
             uri = data.getData();
             avatar.setImageURI(uri);
@@ -192,7 +190,6 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void saveChange() {
-
         String phone = edtPhone.getText().toString().trim();
         String name = edtName.getText().toString().trim();
         String password = edtPassword.getText().toString().trim();

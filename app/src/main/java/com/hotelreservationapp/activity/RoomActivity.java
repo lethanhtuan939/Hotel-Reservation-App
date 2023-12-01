@@ -65,7 +65,7 @@ public class RoomActivity extends AppCompatActivity {
         });
 
         txt_hName.setText(hotel.getName());
-        txt_count.setText(String.valueOf(list_room.size()) + " rooms");
+        txt_count.setText(list_room.size() + " rooms");
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import com.hotelreservationapp.model.Hotel;
 import com.hotelreservationapp.model.Reservation;
 import com.hotelreservationapp.model.Room;
 import com.hotelreservationapp.model.User;
+import com.hotelreservationapp.utils.DateUtil;
 import com.squareup.picasso.Picasso;
 
 import java.time.LocalDate;
@@ -26,7 +28,7 @@ public class DetailActivity extends AppCompatActivity {
     Button btnReservation;
     ImageView imgBack, imgDetail;
 
-    TextView nameHotel, nameRoom, price, location, floor, roomType, status;
+    TextView nameHotel, nameRoom, price, location, floor, roomType, status, sale;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -37,16 +39,17 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Room room = (Room) intent.getSerializableExtra("room");
-        nameHotel.setText("Phòng" + room.getHotel().getName());
+        nameHotel.setText("Phòng " + room.getHotel().getName());
         Picasso.get().load(room.getImgRoom()).into(imgDetail);
         nameRoom.setText(room.getName());
         price.setText(String.valueOf(room.getPrice()));
         location.setText(room.getHotel().getLocation().getName());
         roomType.setText(room.getRoomType().getName());
-        floor.setText("Tầng " + String.valueOf(room.getFloor()));
+        floor.setText("Tầng " + room.getFloor());
         status.setText(room.getState());
+        sale.setText(room.getSale() + "%");
 
-        if(room.getState().equals("ĐÃ ĐƯỢC ĐẶT")){
+        if (room.getState().equals("ĐÃ ĐƯỢC ĐẶT")) {
             btnReservation.setEnabled(false);
         }
         btnReservation.setOnClickListener(new View.OnClickListener() {
@@ -54,17 +57,18 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DetailActivity.this, BookingActivity1.class);
                 sharedPreferences = getSharedPreferences("data_user", MODE_PRIVATE);
-                User user = new User(sharedPreferences.getInt("id",0),
-                        sharedPreferences.getString("name",""),
-                        sharedPreferences.getString("email",""),
-                        sharedPreferences.getString("phoneNumber",""));
+                User user = new User(sharedPreferences.getInt("id", 0),
+                        sharedPreferences.getString("name", ""),
+                        sharedPreferences.getString("email", ""),
+                        sharedPreferences.getString("phoneNumber", ""));
 
                 Reservation reservation = new Reservation();
                 Date currentDate = Calendar.getInstance().getTime();
-                reservation.setDayStart(currentDate);
+
+                reservation.setBookingDate(DateUtil.formatToString(currentDate, "yyyy-MM-dd"));
                 reservation.setUser(user);
                 reservation.setRoom(room);
-                intent.putExtra("reservation",reservation);
+                intent.putExtra("reservation", reservation);
                 startActivity(intent);
             }
         });
@@ -89,6 +93,7 @@ public class DetailActivity extends AppCompatActivity {
         floor = findViewById(R.id.txt_floor);
         //   status = findViewById(R.id.txt_status);
         status = findViewById(R.id.state);
+        sale = findViewById(R.id.sale);
     }
 
 }

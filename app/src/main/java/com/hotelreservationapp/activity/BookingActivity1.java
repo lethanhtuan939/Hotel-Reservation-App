@@ -62,12 +62,8 @@ public class BookingActivity1 extends AppCompatActivity {
                                 selectedCalendar.set(year, month, dayOfMonth);
                                 Date selectedDate = selectedCalendar.getTime();
                                 String dateString = DateUtil.formatToString(selectedDate, "yyyy-MM-dd");
+                                reservation.setDayStart(dateString);
 
-                                try {
-                                    reservation.setDayStart(DateUtil.formatToDate(dateString, "yyyy-MM-dd"));
-                                } catch (ParseException e) {
-                                    throw new RuntimeException(e);
-                                }
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -91,14 +87,13 @@ public class BookingActivity1 extends AppCompatActivity {
                                 selectedCalendar.set(year, month, dayOfMonth);
                                 Date selectedDate = selectedCalendar.getTime();
                                 String dateString = DateUtil.formatToString(selectedDate, "yyyy-MM-dd");
+                                reservation.setDayEnd(dateString);
 
                                 try {
-                                    reservation.setDayEnd(DateUtil.formatToDate(dateString, "yyyy-MM-dd"));
+                                    reservation.totalPrice();
                                 } catch (ParseException e) {
                                     throw new RuntimeException(e);
                                 }
-
-                                reservation.totalPrice();
                                 txtPrice.setText(String.valueOf(reservation.getPrice()));
                             }
                         }, mYear, mMonth, mDay);

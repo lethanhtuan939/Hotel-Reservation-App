@@ -86,7 +86,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         btnSaveChange = findViewById(R.id.cp_btnSaveChange);
         imgBack = findViewById(R.id.imgBack);
         edtNewPassword = findViewById(R.id.cp_edtNewPassword);
-        edtRepeatPassword = findViewById(R.id.cp_edtRepeatPassword);
+        edtRepeatPassword = findViewById(R.id.cp_edtRepeatPassword1);
         notice1 = findViewById(R.id.cp_notice1);
         notice2 = findViewById(R.id.cp_notice2);
     }

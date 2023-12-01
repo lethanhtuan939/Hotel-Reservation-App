@@ -42,10 +42,10 @@ public class BookingActivity2 extends AppCompatActivity {
         txtHotel.setText(reservation.getRoom().getHotel().getName());
         txtRoom.setText("Phòng: " + reservation.getRoom().getName());
         Picasso.get().load(reservation.getRoom().getImgRoom()).into(imgb2Room);
-        txtCheckin.setText(DateUtil.formatToString(reservation.getDayStart(), "yyyy-MM-dd"));
-        txtCheckout.setText(DateUtil.formatToString(reservation.getDayEnd(), "yyyy-MM-dd"));
-        txtFrom.setText(DateUtil.formatToString(reservation.getDayStart(), "yyyy-MM-dd"));
-        txtTo.setText(DateUtil.formatToString(reservation.getDayEnd(), "yyyy-MM-dd"));
+        txtCheckin.setText(reservation.getDayStart());
+        txtCheckout.setText(reservation.getDayEnd());
+        txtFrom.setText(reservation.getDayStart());
+        txtTo.setText(reservation.getDayEnd());
         txtRawPrice.setText(String.valueOf(reservation.getPrice()));
         txtTotal.setText(String.valueOf(reservation.getPrice()));
 

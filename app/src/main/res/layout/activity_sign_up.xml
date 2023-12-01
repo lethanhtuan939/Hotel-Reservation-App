@@ -69,7 +69,7 @@
             android:id="@+id/edtNameSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/customedittext_pc"
             android:hint="Name"
             android:inputType="text" />
@@ -82,22 +82,61 @@
             android:background="@drawable/customedittext_pc"
             android:hint="Mobile number" />
 
-        <EditText
-            android:id="@+id/edtSignupPassword"
+<!--        <EditText-->
+<!--            android:id="@+id/edtSignupPassword"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/customedittext_pc"-->
+<!--            android:hint="Password" />-->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/customedittext_pc"
-            android:hint="Password" />
+            app:passwordToggleEnabled="true"
+            android:textColorHint="@color/grey"
+            android:hint="Password"
+            app:hintTextAppearance="@android:color/transparent"
+            >
+            <EditText
+                android:id="@+id/edtSignupPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/customedittext_pc"
+                android:inputType="textPassword"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="10dp"
+            app:passwordToggleEnabled="true"
+            android:textColorHint="@color/grey"
+            android:hint="Repeat Password"
+            app:hintTextAppearance="@android:color/transparent"
+            >
+            <EditText
+                android:id="@+id/edtRepeatPasswordSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/customedittext_pc"
+                android:inputType="textPassword"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/edtRepeatPasswordSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/customedittext_pc"
-            android:hint="Repeat Password" />
+<!--        <EditText-->
+<!--            android:id="@+id/edtRepeatPasswordSignUp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:background="@drawable/customedittext_pc"-->
+<!--            android:hint="Repeat Password" />-->
+
 
         <TextView
             android:id="@+id/txtPasswordMessage"
@@ -123,7 +162,7 @@
             android:gravity="center"
             android:textColor="#868686"
             android:text="or"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:textSize="18dp"/>
 
 
@@ -133,19 +172,20 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="Đã có tài khoản?"
                 android:textSize="18dp"
                 android:layout_marginLeft="56dp"/>
+
             <TextView
                 android:id="@+id/txtSignin"
-                android:onClick="onTextViewClick_signup"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+
+                android:onClick="onTextViewClick_signup"
                 android:text="Đăng nhập"
-                android:textSize="18dp"
-                android:layout_marginTop="5dp"
-                android:textColor="#4C9FC1"/>
+                android:textColor="#4C9FC1"
+                android:textSize="18dp" />
         </LinearLayout>
 
     </LinearLayout>

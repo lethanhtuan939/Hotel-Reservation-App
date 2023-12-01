@@ -8,19 +8,19 @@ public class Room implements Serializable {
     private  String name;
     private int floor;
     private String imgRoom;
-    private Hotel Hotel;
+    private Hotel hotel;
     private String state;
     private  double sale;
     private RoomType roomType;
     private  double price;
 
 
-    public Room(int id, String name,int floor, String imgRoom, Hotel Hotel, String state, double sale, RoomType roomType, double price) {
+    public Room(int id, String name,int floor, String imgRoom, Hotel hotel, String state, double sale, RoomType roomType, double price) {
         this.id = id;
         this.name = name;
         this.floor = floor;
         this.imgRoom = imgRoom;
-        this.Hotel = Hotel;
+        this.hotel = hotel;
         this.state = state;
         this.sale = sale;
         this.roomType = roomType;
@@ -69,12 +69,12 @@ public class Room implements Serializable {
         this.imgRoom = imgRoom;
     }
 
-    public com.hotelreservationapp.model.Hotel getHotel() {
-        return Hotel;
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    public void setHotel(com.hotelreservationapp.model.Hotel hotel) {
-        Hotel = hotel;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     public RoomType getRoomType() {
@@ -108,7 +108,7 @@ public class Room implements Serializable {
                 ", name='" + name + '\'' +
                 ", floor=" + floor +
                 ", imgRoom='" + imgRoom + '\'' +
-                ", Hotel=" + Hotel +
+                ", Hotel=" + hotel +
                 ", state='" + state + '\'' +
                 ", sale=" + sale +
                 ", roomType=" + roomType +
