@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="15dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -19,10 +19,10 @@
             <TextView
                 android:id="@+id/history_name_hotel"
                 android:layout_width="210dp"
-                android:gravity="left|center"
                 android:layout_height="match_parent"
-                android:text="Tên khách sạn"
                 android:layout_marginLeft="10dp"
+                android:gravity="left|center"
+                android:text="Tên khách sạn"
                 android:textColor="@color/main_color"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -104,10 +104,10 @@
             android:layout_height="50dp">
 
             <TextView
-                android:layout_marginLeft="10dp"
                 android:id="@+id/history_payMethod"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:gravity="left|center"
                 android:text="THANH TOÁN TRỰC TIẾP"
                 android:textColor="@color/red"
@@ -129,6 +129,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <Button
+            android:id="@+id/history_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/history_btn"
+            android:text="XÁC NHẬN"
+            app:backgroundTint="@color/main_color" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

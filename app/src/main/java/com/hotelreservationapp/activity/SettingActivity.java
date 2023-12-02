@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ public class SettingActivity extends AppCompatActivity {
     ConstraintLayout profile_tab, history_tab, aboutus_tab;
     TextView txt_name,txt_email;
     ImageView avtar;
+    Button btnLogout;
+
     SharedPreferences sharedPreferences;
 
     @Override
@@ -42,6 +45,14 @@ public class SettingActivity extends AppCompatActivity {
         BottomNavigationView navigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
         navigationView.setSelectedItemId(R.id.btn_setting);
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent  intent = new Intent(getApplicationContext(), SigninActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -53,6 +64,7 @@ public class SettingActivity extends AppCompatActivity {
 
                 } else if (item.getItemId() == R.id.btn_favourites) {
                     Intent intent = new Intent(getApplicationContext(), FavouriteActivity.class);
+                    intent.putExtra("user_favorite", user);
                     startActivity(intent);
                     finish();
                 }
@@ -94,6 +106,7 @@ public class SettingActivity extends AppCompatActivity {
         txt_email = findViewById(R.id.setting_email);
         txt_name =  findViewById(R.id.setting_username);
         avtar = findViewById(R.id.setting_avatar);
+        btnLogout = findViewById(R.id.btnLogout);
     }
 
     private User getUser() {

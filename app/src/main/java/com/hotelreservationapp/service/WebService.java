@@ -71,4 +71,10 @@ public interface WebService {
 
     @GET("reservation/{user}")
     Call<ResponseObject> getReservationsByStatusAndUser(@Path("user") int id, @Query("status") String status);
+
+    @GET("reservation/{user}/current")
+    Call<ResponseObject> getReservationsByStatusAndUser(@Path("user") int id);
+
+    @POST("reservation/state")
+    Call<ResponseObject> changeStatusReservation(@Query("id") int id, @Query("state") String state);
 }

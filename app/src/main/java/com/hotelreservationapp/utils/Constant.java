@@ -18,4 +18,5 @@ public class Constant {
     public static final String STATUS_COMPLETED = "ĐÃ XONG";
     public static final String STATUS_CANCELED = "ĐÃ HỦY";
     public static final String STATUS_ACCEPTED = "ĐÃ CHẤP NHẬN";
+    public static final String STATUS_DONE = "ĐÃ XONG";
 }

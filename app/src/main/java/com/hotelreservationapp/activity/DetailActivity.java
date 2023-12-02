@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +29,7 @@ public class DetailActivity extends AppCompatActivity {
     Button btnReservation;
     ImageView imgBack, imgDetail;
 
-    TextView nameHotel, nameRoom, price, location, floor, roomType, status, sale;
+    TextView nameHotel, nameRoom, price, location, floor, roomType, status, new_price, sale, minus, sale2;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -39,15 +40,32 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Room room = (Room) intent.getSerializableExtra("room");
-        nameHotel.setText("Phòng " + room.getHotel().getName());
+        nameHotel.setText(room.getHotel().getName());
         Picasso.get().load(room.getImgRoom()).into(imgDetail);
-        nameRoom.setText(room.getName());
-        price.setText(String.valueOf(room.getPrice()));
+        nameRoom.setText("Phòng " + room.getName());
+        price.setText("$" + (room.getPrice()));
+        price.setPaintFlags(price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
         location.setText(room.getHotel().getLocation().getName());
         roomType.setText(room.getRoomType().getName());
-        floor.setText("Tầng " + room.getFloor());
+        floor.setText("" + room.getFloor());
+
+        double number = room.getPrice() * (1 - room.getSale() / 100);
+
+
+        String roundedNumberString = String.format("%.1f", number);
+        double roundedNumber = Double.parseDouble(roundedNumberString);
+        double value = room.getPrice() - roundedNumber;
+        String valueNumberString = String.format("%.1f", value);
+
+
+        minus.setText("$" + valueNumberString);
+
         status.setText(room.getState());
+
+        new_price.setText("$" + roundedNumberString);
         sale.setText(room.getSale() + "%");
+        sale2.setText("$" + roundedNumberString);
 
         if (room.getState().equals("ĐÃ ĐƯỢC ĐẶT")) {
             btnReservation.setEnabled(false);
@@ -90,10 +108,13 @@ public class DetailActivity extends AppCompatActivity {
         price = findViewById(R.id.price);
         location = findViewById(R.id.txt_location);
         roomType = findViewById(R.id.roomType);
-        floor = findViewById(R.id.txt_floor);
+        floor = findViewById(R.id.detail_txt_floor);
         //   status = findViewById(R.id.txt_status);
         status = findViewById(R.id.state);
-        sale = findViewById(R.id.sale);
+        new_price = findViewById(R.id.new_price);
+        sale = findViewById(R.id.detail_sale);
+        minus = findViewById(R.id.detail_minus);
+        sale2 = findViewById(R.id.sale2);
     }
 
 }

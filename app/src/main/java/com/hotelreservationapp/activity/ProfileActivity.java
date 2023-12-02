@@ -66,7 +66,6 @@ public class ProfileActivity extends AppCompatActivity {
         accessToken = sharedPreferences.getString("accessToken", "");
         getUser(id);
 
-
         txtChange.setPaintFlags(txtChange.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         txtChange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,6 +213,7 @@ public class ProfileActivity extends AppCompatActivity {
                 if (responseObject.getCode() != 200) {
                     Toast.makeText(ProfileActivity.this, responseObject.getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
+                    Toast.makeText(ProfileActivity.this, "Đã cập nhật thành công!", Toast.LENGTH_SHORT).show();
                     Gson gson = new Gson();
                     String userJson = gson.toJson(responseObject);
                     setInfo(getUserFromJson(userJson));

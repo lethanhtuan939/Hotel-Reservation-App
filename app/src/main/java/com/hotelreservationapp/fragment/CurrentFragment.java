@@ -53,7 +53,7 @@ public class CurrentFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences("data_user", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("id", 2);
 
-        fetchCurrentReservation(Constant.STATUS_PENDING, userId, new ReservationCallback() {
+        fetchCurrentReservation(userId, new ReservationCallback() {
             @Override
             public void onReservationsFetched(List<Reservation> reservations) {
                 ReservationAdapter reservationAdapter = new ReservationAdapter(getContext(), reservations);
@@ -61,20 +61,12 @@ public class CurrentFragment extends Fragment {
             }
         });
 
-//        fetchCurrentReservation(Constant.STATUS_ACCEPTED, userId, new ReservationCallback() {
-//            @Override
-//            public void onReservationsFetched(List<Reservation> reservations) {
-//                ReservationAdapter reservationAdapter = new ReservationAdapter(getContext(), reservations);
-//                currentList.setAdapter(reservationAdapter);
-//            }
-//        });
-
         return view;
     }
 
 
-    public void fetchCurrentReservation(String status, int userId, ReservationCallback callback) {
-        WebService.api.getReservationsByStatusAndUser(userId, status).enqueue(new Callback<ResponseObject>() {
+    public void fetchCurrentReservation(int userId, ReservationCallback callback) {
+        WebService.api.getReservationsByStatusAndUser(userId).enqueue(new Callback<ResponseObject>() {
             @Override
             public void onResponse(Call<ResponseObject> call, Response<ResponseObject> response) {
                 ResponseObject responseObject = response.body();

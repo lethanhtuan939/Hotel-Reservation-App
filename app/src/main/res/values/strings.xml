@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hotel-Reservation-App</string>
+    <string name="app_name">Hotel Reservation</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="select">Select</string>
 </resources>
