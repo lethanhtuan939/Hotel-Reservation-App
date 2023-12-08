@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
@@ -28,15 +29,20 @@ import com.hotelreservationapp.model.User;
 import com.hotelreservationapp.request.ResponseObject;
 import com.hotelreservationapp.service.WebService;
 import com.hotelreservationapp.utils.Constant;
+import com.hotelreservationapp.utils.RealPathUtil;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,6 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
     User user;
     String password, accessToken;
     Uri uri;
+    ProgressDialog progressDialog;
 
     private final int GALLERY_REQ_CODE = 1000;
 
@@ -60,6 +67,10 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         mapping();
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
+
         sharedPreferences = getSharedPreferences("data_user", MODE_PRIVATE);
         int id = sharedPreferences.getInt("id", 0);
         password = sharedPreferences.getString("password", "");
@@ -202,10 +213,16 @@ public class ProfileActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String userJson = gson.toJson(user);
 
-        updateUser(user.getId(), userJson);
+        if(uri == null) {
+            updateUser(user.getId(), userJson);
+        } else {
+            updateUserWithFile(user.getId(), userJson, uri);
+        }
+
     }
 
     private void updateUser(int id, String user) {
+        progressDialog.show();
         WebService.api.updateUser(id, user).enqueue(new Callback<ResponseObject>() {
             @Override
             public void onResponse(Call<ResponseObject> call, Response<ResponseObject> response) {
@@ -218,6 +235,39 @@ public class ProfileActivity extends AppCompatActivity {
                     String userJson = gson.toJson(responseObject);
                     setInfo(getUserFromJson(userJson));
                 }
+
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseObject> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void updateUserWithFile(int id, String user, Uri uri) {
+        progressDialog.show();
+
+        RequestBody requestBodyUser = RequestBody.create(MediaType.parse("multipart/form-data"), user);
+        String realPathFile = RealPathUtil.getRealPath(this, uri);
+        File file = new File(realPathFile);
+        RequestBody requestBodyFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part avt = MultipartBody.Part.createFormData("file", file.getName(), requestBodyFile);
+        WebService.api.updateUserWithFile(id, requestBodyUser, avt).enqueue(new Callback<ResponseObject>() {
+            @Override
+            public void onResponse(Call<ResponseObject> call, Response<ResponseObject> response) {
+                ResponseObject responseObject = response.body();
+                if (responseObject.getCode() != 200) {
+                    Toast.makeText(ProfileActivity.this, responseObject.getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ProfileActivity.this, "Đã cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                    Gson gson = new Gson();
+                    String userJson = gson.toJson(responseObject);
+                    setInfo(getUserFromJson(userJson));
+                }
+
+                progressDialog.dismiss();
             }
 
             @Override

@@ -51,7 +51,6 @@ public class SigninActivity extends AppCompatActivity {
         edt_email.setText(user_text);
         edt_pass.setText(pass_text);
 
-
         btn_loGin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
