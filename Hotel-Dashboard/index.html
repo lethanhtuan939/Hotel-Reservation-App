@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <div class="position-sticky">
+                    <div class="sidebar-logo">
+                        <img src="./images/hotel_gb_app.png" alt="Logo">
+                    </div>
+                    <div class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fa-solid fa-bars" style="font-size: 24px;"></i>
+                    </div>
+                    <ul class="nav flex-column" id="sidebar">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">
+                                <i class="fa-solid fa-house"></i> &nbsp; Overview
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="hotels.html">
+                                <i class="fa-solid fa-hotel"></i> &nbsp; Hotels
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="users.html">
+                                <i class="fa-solid fa-user"></i> &nbsp; Users
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reservation.html">
+                                <i class="fa-solid fa-chart-simple"></i> &nbsp; Reservation
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                    <div class="mb-2 mb-md-0 d-flex align-items-center">
+                        <div class="user-info d-flex align-items-center">
+                            <div class="dropdown">
+                                <span class="user-name"></span>
+                                <button class="btn dropdown-toggle" type="button" id="userDropdown"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="" alt="User Profile" class="user-image">
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li id="logoutBtn"><a class="dropdown-item" href="#">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Cards and Content -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body" style="background-color: #FFEEF1;">
+                                <h5 class="card-title">Total Users</h5>
+                                <p class="card-text">1,234</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body" style="background-color: #FFF2DC;">
+                                <h5 class="card-title">Revenue</h5>
+                                <p class="card-text">$45,678</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body" style="background-color: #D8FAE7;">
+                                <h5 class="card-title">Orders</h5>
+                                <p class="card-text">567</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-2">
+                        <select class="form-select" id="year" aria-label="Default select example">
+                            <option selected value="2023">2023</option>
+                            <option value="2022">2022</option>
+                        </select>
+                    </div>
+                    <canvas id="myChart" style="width:100%;"></canvas>
+                </div>
+
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        const xValues = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
+        let yValues = [];
+        const barColors = ["teal", "olive", "brown", "beige", "cyan", "red", "green", "blue", "navy", "pink", "orange", "yellow"];
+
+        const year = document.getElementById('year');
+        let data = [];
+
+        function fetchingData(year) {
+            fetch(`http://localhost:8080/api/v1/revenue?year=${year}`)
+                .then(response => response.json())
+                .then(response => {
+                    data = response.data;
+                    generateYValues(year);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+
+        function generateYValues(year) {
+            const yValues = Array.from({ length: 12 }, (_, index) => {
+                const monthData = data.find(item => item[0] === index + 1);
+                return monthData ? monthData[1] : 0;
+            });
+            createChart(year, yValues);
+
+        }
+
+        fetchingData(2023);
+
+        year.onchange = () => {
+            fetchingData(year.value);
+        }
+
+        function createChart(year, yValues) {
+            new Chart("myChart", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: `Doanh thu theo tháng năm ${year}`
+                    }
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>

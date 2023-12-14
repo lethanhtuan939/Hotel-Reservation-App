@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.user-info {
+    margin-left: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.user-info .user-name {
+    margin-right: 10px;
+}
+
+.user-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.nav-link.active {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    background-color: #343a40;
+    color: white;
+    min-height: 100vh;
+}
+
+.sidebar-logo {
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar-logo img {
+    width: 80px;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.sidebar a.nav-link {
+    color: white;
+    transition: 0.3s;
+}
+
+.sidebar a.nav-link:hover {
+    background-color: #495057;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.cell {
+    color: #fff;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.admin {
+    background-color: #198754;
+}
+
+.user {
+    background-color: #0d6efd;
+}
+
+.red {
+    background-color: #f00;
+}
+
+.align-middle {
+    vertical-align: middle;
+}
+
+.pink {
+    color: #ff69b4;
+}
+
+.purple {
+    color: #9932cc;
+}
+
+.btn-edit {
+    color: #fff;
+    background-color: #0d6efd;
+}
+
+.form-control:hover {
+    border-color: #1dbfaf;
+}
+
+.invalid .form-control {
+    border-color: #f33a58;
+}
+
+.invalid .form-message {
+    color: #f33a58;
+}
+
+.form-message {
+    font-size: 12px;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+}
+
+.active {
+    background-color: #007bff;
+}
+
+td {
+    height: 60px;
+}
+
+.btn-primary {
+    background: #0d6efd;
+}

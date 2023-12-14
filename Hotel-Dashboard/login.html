@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <title>Login</title>
+
+    <style>
+        .form-control:hover {
+            border-color: #1dbfaf;
+        }
+
+        .invalid .form-control {
+            border-color: #f33a58;
+        }
+
+        .invalid .form-message {
+            color: #f33a58;
+        }
+
+        .form-message {
+            font-size: 12px;
+            line-height: 1.6rem;
+            padding: 4px 0 0;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">Login</h2>
+                        <div class="hide alert alert-danger text-center">
+                            <p>Your email or password is invalid!</p>
+                        </div>
+                        <form id="form-login">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Email</label>
+                                <input type="text" id="email" class="form-control" name="email"
+                                    placeholder="Enter your email" required>
+                                <span class="form-message"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" id="password" class="form-control"
+                                    placeholder="Enter your password" name="password" required>
+                                <span class="form-message"></span>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" id="btnLogin" class="btn form-control btn-primary">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/validate.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        Validator({
+            form: '#form-login',
+            formGroupSelector: '.mb-3',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email'),
+                Validator.isRequired('#password'),
+            ]
+        });
+    </script>
+</body>
+
+</html>
