@@ -3,7 +3,7 @@ package com.hotelreservationapp.utils;
 import java.util.regex.Pattern;
 
 public class Constant {
-    public static final String PRE_FIX = "http://192.168.157.216:8080/api/v1";
+    public static final String PRE_FIX = "https://hotel-backend-production-64a4.up.railway.app/api/v1";
     public static boolean isValidEmailId(String email) {
 
         return Pattern.compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"

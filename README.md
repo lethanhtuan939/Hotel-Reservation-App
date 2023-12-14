@@ -1,4 +1,6 @@
 # Hotel-Reservation - Ứng dụng đặt phòng khách sạn
+|[<img src="Report/Cover.png" width="50%" >](Group_3_123LTTD01.doc)|
+
 ### Danh sách thành viên
 | Tên | Mã Sinh Viên |
 |-----|--------------|
@@ -10,3 +12,5 @@
 - **Backend**: Spring boot
 - **App**: Android Java
 - **Dashboard**: HTML, CSS, JS
+
+
