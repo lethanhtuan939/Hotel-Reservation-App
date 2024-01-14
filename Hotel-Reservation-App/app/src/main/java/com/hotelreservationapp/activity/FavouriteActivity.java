@@ -64,7 +64,6 @@ public class FavouriteActivity extends AppCompatActivity {
                     return true;
                 else if (item.getItemId() == R.id.btn_home) {
                     finish();
-
                 } else if (item.getItemId() == R.id.btn_setting) {
                     Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
                     finish();

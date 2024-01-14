@@ -3,7 +3,7 @@ package com.hotelreservationapp.utils;
 import java.util.regex.Pattern;
 
 public class Constant {
-    public static final String PRE_FIX = "https://hotel-backend-production-64a4.up.railway.app/api/v1";
+    public static final String PRE_FIX = "https://hotel-backend-production-9354.up.railway.app/api/v1";
     public static boolean isValidEmailId(String email) {
 
         return Pattern.compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
@@ -15,7 +15,7 @@ public class Constant {
     }
 
     public static final String STATUS_PENDING = "ĐANG CHỜ";
-    public static final String STATUS_COMPLETED = "ĐÃ XONG";
+    public static final String STATUS_COMPLETED = "ĐÃ HOÀN THÀNH";
     public static final String STATUS_CANCELED = "ĐÃ HỦY";
     public static final String STATUS_ACCEPTED = "ĐÃ CHẤP NHẬN";
     public static final String STATUS_DONE = "ĐÃ XONG";
